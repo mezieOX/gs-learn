@@ -73,24 +73,24 @@ export default function SignInScreen({
   };
 
   return (
-    <div className="flex h-full">
+    <div className="flex flex-col lg:flex-row min-h-full">
       {/* Left Panel - Greeting */}
-      <div className="flex-1 flex items-center justify-center bg-gradient-to-br from-green-50 to-purple-50 p-12">
+      <div className="flex-1 flex items-center justify-center bg-gradient-to-br from-green-50 to-purple-50 p-6 sm:p-8 lg:p-12">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
             Hello there 👋
           </h1>
-          <p className="text-lg text-gray-600">
+          <p className="text-base sm:text-lg text-gray-600">
             Welcome back! Please sign in to continue.
           </p>
         </div>
       </div>
 
       {/* Right Panel - Form */}
-      <div className="flex-1 p-12 flex flex-col justify-center">
+      <div className="flex-1 p-4 sm:p-6 lg:p-12 flex flex-col justify-center">
         <form
           onSubmit={handleSubmit}
-          className="space-y-6 max-w-md mx-auto w-full"
+          className="space-y-4 sm:space-y-6 max-w-md mx-auto w-full"
         >
           <div>
             <label
@@ -166,7 +166,7 @@ export default function SignInScreen({
             )}
           </div>
 
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0">
             <div className="flex items-center">
               <input
                 type="checkbox"
@@ -186,14 +186,14 @@ export default function SignInScreen({
             <button
               type="button"
               onClick={onForgotPassword}
-              className="text-green-600 hover:underline text-sm"
+              className="text-green-600 hover:underline text-sm text-left sm:text-right"
             >
               Forgot Password?
             </button>
           </div>
 
           {/* Divider */}
-          <div className="relative my-6">
+          <div className="relative my-4 sm:my-6">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-gray-300" />
             </div>
@@ -206,9 +206,9 @@ export default function SignInScreen({
           <button
             type="button"
             onClick={onGoogleSignIn}
-            className="w-full bg-white border border-gray-300 text-gray-700 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors duration-200 flex items-center justify-center space-x-2"
+            className="w-full bg-white border border-gray-300 text-gray-700 py-3 sm:py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors duration-200 flex items-center justify-center space-x-2 text-sm sm:text-base"
           >
-            <svg className="w-5 h-5" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24">
               <path
                 fill="#4285F4"
                 d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -231,13 +231,13 @@ export default function SignInScreen({
 
           <button
             type="submit"
-            className="w-full bg-green-600 text-white py-4 rounded-lg font-semibold hover:bg-green-700 transition-colors duration-200"
+            className="w-full bg-green-600 text-white py-3 sm:py-4 rounded-lg font-semibold hover:bg-green-700 transition-colors duration-200 text-sm sm:text-base"
           >
             Sign in
           </button>
         </form>
 
-        <p className="text-center text-gray-600 mt-6">
+        <p className="text-center text-gray-600 mt-4 sm:mt-6 text-sm sm:text-base">
           Don&apos;t have an account?{" "}
           <button
             onClick={onSignUp}

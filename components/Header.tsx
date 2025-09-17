@@ -65,7 +65,21 @@ export default function Header({ currentPage, onNavigate }: HeaderProps) {
           <button
             className="p-2 text-gray-600 hover:text-green-600 transition-colors duration-200"
             title="Notifications"
-          ></button>
+          >
+            <svg
+              className="w-5 h-5 sm:w-6 sm:h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 17h5l-5 5-5-5h5v-5a7.5 7.5 0 1 0-15 0v5h5l-5 5-5-5h5v-5a10 10 0 1 1 20 0v5z"
+              />
+            </svg>
+          </button>
 
           {/* Settings */}
           <button

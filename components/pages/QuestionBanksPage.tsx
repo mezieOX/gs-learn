@@ -27,6 +27,15 @@ export default function QuestionBanksPage({
     setSelectedSemester(null);
   };
 
+  const handleViewAllQuestions = () => {
+    console.log("Viewing all questions for:", selectedSemester?.title);
+    // Navigate to question bank detail page to view all questions
+    if (onNavigate && selectedSemester) {
+      onNavigate("question-bank-detail");
+    }
+    setSelectedSemester(null);
+  };
+
   return (
     <div className="p-4 lg:p-6">
       {/* Question Banks Banner */}
@@ -85,8 +94,14 @@ export default function QuestionBanksPage({
 
       {/* Semester Detail Modal */}
       {selectedSemester && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+          onClick={() => setSelectedSemester(null)}
+        >
+          <div
+            className="bg-white rounded-lg p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="flex justify-between items-start mb-4">
               <h3 className="text-2xl font-bold text-gray-800">
                 {selectedSemester.title}
@@ -165,7 +180,7 @@ export default function QuestionBanksPage({
                   Start Practice
                 </button>
                 <button
-                  onClick={handleStartPractice}
+                  onClick={handleViewAllQuestions}
                   className="flex-1 bg-white text-green-600 border-2 border-green-600 px-4 py-2 rounded-lg hover:bg-green-50 transition-colors"
                 >
                   View All Questions

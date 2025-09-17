@@ -40,6 +40,12 @@ export default function QuestionBankDetail({
     setShowQuestionTypeDropdown(false);
   };
 
+  const handleQuestionRangeChange = (value: string) => {
+    // Validate and format the question range input
+    const cleanedValue = value.replace(/[^0-9,\s-]/g, ""); // Only allow numbers, commas, spaces, and hyphens
+    setQuestionRange(cleanedValue);
+  };
+
   return (
     <div className="min-h-screen bg-white p-6">
       {/* Header */}
@@ -215,9 +221,11 @@ export default function QuestionBankDetail({
                     <input
                       type="text"
                       value={questionRange}
-                      onChange={(e) => setQuestionRange(e.target.value)}
+                      onChange={(e) =>
+                        handleQuestionRangeChange(e.target.value)
+                      }
                       className="flex-1 px-3 py-2 bg-green-50 border-0 focus:ring-0 focus:outline-none"
-                      placeholder="1,2,3,4,5,6,7,8,9,10"
+                      placeholder="1,2,3,4,5,6,7,8,9,10 or 1-10"
                     />
                     <button className="px-3 py-2 bg-green-100 hover:bg-green-200 transition-colors">
                       <svg

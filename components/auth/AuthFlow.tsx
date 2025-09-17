@@ -111,7 +111,7 @@ export default function AuthFlow({ onAuthenticated }: AuthFlowProps) {
         return (
           <OnboardingScreen
             onGetStarted={() => setCurrentStep("signup")}
-            onAlreadyHaveAccount={() => onAuthenticated()}
+            onAlreadyHaveAccount={() => setCurrentStep("signin")}
           />
         );
 
@@ -128,7 +128,7 @@ export default function AuthFlow({ onAuthenticated }: AuthFlowProps) {
           <div className="relative">
             <OnboardingScreen
               onGetStarted={() => setCurrentStep("signup")}
-              onAlreadyHaveAccount={() => onAuthenticated()}
+              onAlreadyHaveAccount={() => setCurrentStep("signin")}
             />
             <ModalWrapper onClose={() => setCurrentStep("onboarding")}>
               <SignUpScreen
@@ -145,7 +145,7 @@ export default function AuthFlow({ onAuthenticated }: AuthFlowProps) {
           <div className="relative">
             <OnboardingScreen
               onGetStarted={() => setCurrentStep("signup")}
-              onAlreadyHaveAccount={() => onAuthenticated()}
+              onAlreadyHaveAccount={() => setCurrentStep("signin")}
             />
             <ModalWrapper onClose={() => setCurrentStep("onboarding")}>
               <SignInScreen
@@ -163,7 +163,7 @@ export default function AuthFlow({ onAuthenticated }: AuthFlowProps) {
           <div className="relative">
             <OnboardingScreen
               onGetStarted={() => setCurrentStep("signup")}
-              onAlreadyHaveAccount={() => onAuthenticated()}
+              onAlreadyHaveAccount={() => setCurrentStep("signin")}
             />
             <ModalWrapper onClose={() => setCurrentStep("onboarding")}>
               <ForgotPasswordScreen
@@ -179,7 +179,7 @@ export default function AuthFlow({ onAuthenticated }: AuthFlowProps) {
           <div className="relative">
             <OnboardingScreen
               onGetStarted={() => setCurrentStep("signup")}
-              onAlreadyHaveAccount={() => onAuthenticated()}
+              onAlreadyHaveAccount={() => setCurrentStep("signin")}
             />
             <ModalWrapper onClose={() => setCurrentStep("onboarding")}>
               <EmailSentScreen
@@ -196,7 +196,7 @@ export default function AuthFlow({ onAuthenticated }: AuthFlowProps) {
           <div className="relative">
             <OnboardingScreen
               onGetStarted={() => setCurrentStep("signup")}
-              onAlreadyHaveAccount={() => onAuthenticated()}
+              onAlreadyHaveAccount={() => setCurrentStep("signin")}
             />
             <ModalWrapper onClose={() => setCurrentStep("onboarding")}>
               <OTPVerificationScreen
@@ -214,7 +214,7 @@ export default function AuthFlow({ onAuthenticated }: AuthFlowProps) {
           <div className="relative">
             <OnboardingScreen
               onGetStarted={() => setCurrentStep("signup")}
-              onAlreadyHaveAccount={() => onAuthenticated()}
+              onAlreadyHaveAccount={() => setCurrentStep("signin")}
             />
             <ModalWrapper onClose={() => setCurrentStep("onboarding")}>
               <ResetPasswordScreen

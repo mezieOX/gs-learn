@@ -12,6 +12,22 @@ export default function SummaryPage() {
     setSelectedSummary(summary);
   };
 
+  const handleReadSummary = (summary: Summary) => {
+    console.log("Reading summary:", summary.title);
+    // For now, show an alert with summary content
+    alert(
+      `Reading Summary: ${summary.title}\n\nThis summary contains ${summary.pages} pages of study material. In a real application, this would open a full-screen reader or navigate to a dedicated reading page.`
+    );
+  };
+
+  const handleDownloadPDF = (summary: Summary) => {
+    console.log("Downloading PDF for:", summary.title);
+    // For now, show an alert
+    alert(
+      `Downloading PDF: ${summary.title}\n\nThis would initiate a PDF download of the summary content.`
+    );
+  };
+
   return (
     <div className="p-4 lg:p-6">
       {/* Header Section */}
@@ -35,8 +51,14 @@ export default function SummaryPage() {
 
       {/* Summary Detail Modal */}
       {selectedSummary && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+          onClick={() => setSelectedSummary(null)}
+        >
+          <div
+            className="bg-white rounded-lg p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="flex justify-between items-start mb-4">
               <h3 className="text-2xl font-bold text-gray-800">
                 {selectedSummary.title}
@@ -100,10 +122,16 @@ export default function SummaryPage() {
               </div>
 
               <div className="flex space-x-4">
-                <button className="flex-1 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
+                <button
+                  onClick={() => handleReadSummary(selectedSummary)}
+                  className="flex-1 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
+                >
                   Read Summary
                 </button>
-                <button className="flex-1 bg-white text-green-600 border-2 border-green-600 px-4 py-2 rounded-lg hover:bg-green-50 transition-colors">
+                <button
+                  onClick={() => handleDownloadPDF(selectedSummary)}
+                  className="flex-1 bg-white text-green-600 border-2 border-green-600 px-4 py-2 rounded-lg hover:bg-green-50 transition-colors"
+                >
                   Download PDF
                 </button>
               </div>
@@ -114,4 +142,3 @@ export default function SummaryPage() {
     </div>
   );
 }
-

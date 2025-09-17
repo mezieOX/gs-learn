@@ -28,7 +28,7 @@ export default function Home() {
         return <HomePage onNavigate={handleNavigation} />;
       case "courses":
       case "/courses":
-        return <CoursesPage />;
+        return <CoursesPage onNavigate={handleNavigation} />;
       case "question-banks":
       case "/question-banks":
         return <QuestionBanksPage onNavigate={handleNavigation} />;

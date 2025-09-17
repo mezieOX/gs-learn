@@ -5,7 +5,11 @@ import { mockCourses } from "@/data/mockData";
 import { Course } from "@/types";
 import CourseCard from "@/components/CourseCard";
 
-export default function CoursesPage() {
+interface CoursesPageProps {
+  onNavigate?: (path: string) => void;
+}
+
+export default function CoursesPage({ onNavigate }: CoursesPageProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
 
@@ -15,6 +19,22 @@ export default function CoursesPage() {
 
   const handleCourseClick = (course: Course) => {
     setSelectedCourse(course);
+  };
+
+  const handleStartCourse = (course: Course) => {
+    console.log("Starting course:", course.title);
+    // Close the modal
+    setSelectedCourse(null);
+    // Navigate to course-specific content (for now, navigate to question banks as courses contain questions)
+    if (onNavigate) {
+      onNavigate("question-banks");
+    }
+  };
+
+  const handleViewDetails = (course: Course) => {
+    console.log("Viewing details for:", course.title);
+    // Close the modal since the detailed information is already displayed
+    setSelectedCourse(null);
   };
 
   return (
@@ -70,8 +90,14 @@ export default function CoursesPage() {
 
       {/* Course Detail Modal */}
       {selectedCourse && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg p-4 sm:p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+          onClick={() => setSelectedCourse(null)}
+        >
+          <div
+            className="bg-white rounded-lg p-4 sm:p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="flex justify-between items-start mb-4">
               <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-800 pr-4">
                 {selectedCourse.title}
@@ -164,11 +190,17 @@ export default function CoursesPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
-                <button className="flex-1 bg-green-600 text-white px-4 py-2 sm:py-3 rounded-lg hover:bg-green-700 transition-colors text-sm sm:text-base">
+                <button
+                  onClick={() => handleStartCourse(selectedCourse)}
+                  className="flex-1 bg-green-600 text-white px-4 py-2 sm:py-3 rounded-lg hover:bg-green-700 transition-colors text-sm sm:text-base"
+                >
                   Start Course
                 </button>
-                <button className="flex-1 bg-white text-green-600 border-2 border-green-600 px-4 py-2 sm:py-3 rounded-lg hover:bg-green-50 transition-colors text-sm sm:text-base">
-                  View Details
+                <button
+                  onClick={() => handleViewDetails(selectedCourse)}
+                  className="flex-1 bg-white text-green-600 border-2 border-green-600 px-4 py-2 sm:py-3 rounded-lg hover:bg-green-50 transition-colors text-sm sm:text-base"
+                >
+                  Close
                 </button>
               </div>
             </div>

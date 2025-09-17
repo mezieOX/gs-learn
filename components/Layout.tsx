@@ -85,8 +85,8 @@ export default function Layout({
             </div>
 
             <p className="text-gray-600 mb-6 text-sm sm:text-base">
-              Are you sure you want to logout? You&apos;ll need to sign in again to
-              access your account.
+              Are you sure you want to logout? You&apos;ll need to sign in again
+              to access your account.
             </p>
 
             <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3">
